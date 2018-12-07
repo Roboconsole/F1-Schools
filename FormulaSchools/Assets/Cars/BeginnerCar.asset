@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Basic car
   artwork: {fileID: 21300000, guid: 5cb7ce7537ad24246b5e4b074583b470, type: 3}
-  carSprite: {fileID: 1907476425736626, guid: 620bab35af876d24f833590388c2dd5f, type: 2}
+  carSprite: {fileID: 1843676104545856, guid: d2f80fde2655fae4ebecfeb0f2aed298, type: 2}
   CpMin: 200
   CPWeightPerUpgrade: 5
   StartingUpgradePrice: 100

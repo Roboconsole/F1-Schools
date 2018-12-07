@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: z
   artwork: {fileID: 21300000, guid: 67284ce652e8bef438f4001172630b98, type: 3}
-  carSprite: {fileID: 1761095467901212, guid: c3fdac1456add474bb9619c3b2e0b105, type: 2}
+  carSprite: {fileID: 1633668830104424, guid: c3d3ca2b30cf91049ab7e85c25e0bc8a, type: 2}
   CpMin: 1000
-  CPWeightPerUpgrade: 20
+  CPWeightPerUpgrade: 40
   StartingUpgradePrice: 5000
   IncreasePriceBy: 800

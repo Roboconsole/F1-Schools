@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\RoboAbathur\Documents\formula schools\F1-Schools\FormulaSchools\Temp\gradleOut\libs\unity-classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="27.0.3"
+        sha1="a19b1141ee5b1101ba950fe721daca7c4ac4cc01">
+        <dex dex="C:\Users\RoboAbathur\Documents\formula schools\F1-Schools\FormulaSchools\Temp\gradleOut\build\intermediates\transforms\preDex\release\1.jar" />
+    </item>
+
+</items>

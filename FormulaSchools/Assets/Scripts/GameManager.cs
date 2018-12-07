@@ -21,11 +21,25 @@ public class GameManager : MonoBehaviour {
     bool isPlayerWinning = true;
     public CarObject currentcar;
     private Levels lvl;
+    public GameObject PlayingCanvas;
+    public GameObject ResultsCanvas;
+    public Text Result;
+    public Text enemyTimeText;
+    public Text playerTimeText;
+    public Text MoneyText;
+    public Text RestartNextText;
+    public float TimeCounter;
+    private float EnemyTime;
+    private float PlayerTime;
+    private bool enemyFinished;
+    private bool playerFinished;
     bool gaveCash=false;
     Vector3 GoToEnemy;
     Vector3 GoToPlayer;
+    public Material EnemyMat;
 	// Use this for initialization
 	void Start () {
+        EnemyMat.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
         GoToPlayer = new Vector2(FinishLine + 5+Player.car.transform.position.x, Player.car.transform.position.y);
         GoToEnemy= new Vector2(FinishLine + 5 + Enemy.car.transform.position.x, Enemy.car.transform.position.y);
         currentcar =FindObjectOfType<MenuManager>().currentlySelectedCar;
@@ -49,9 +63,21 @@ public class GameManager : MonoBehaviour {
         Enemy.CpText.text = "CP: " + Enemy.cp;
         Finishline.transform.position = new Vector3(FinishLine, Finishline.transform.position.y,Finishline.transform.position.z);
 
-
-
-        if (Player.car.transform.position.x < GoToPlayer.x-5f &&Enemy.car.transform.position.x<GoToEnemy.x-5f)
+        if (CanStart)
+        {
+            TimeCounter += Time.deltaTime;
+        }
+        if(Player.car.transform.position.x > GoToPlayer.x - 5f&&!playerFinished)
+        {
+            playerFinished = true;
+            PlayerTime = TimeCounter;
+        }
+        if(Enemy.car.transform.position.x > GoToEnemy.x - 5f && !enemyFinished)
+        {
+            enemyFinished = true;
+            EnemyTime = TimeCounter;
+        }
+            if (Player.car.transform.position.x < GoToPlayer.x-5f &&Enemy.car.transform.position.x<GoToEnemy.x-5f)
         {
             //if player closer to the end then follow player
             if (Vector2.Distance(Player.car.transform.position, new Vector2(FinishLine, Player.car.transform.position.y)) <= Vector2.Distance(Enemy.car.transform.position, new Vector2(FinishLine, Enemy.car.transform.position.y)))
@@ -67,20 +93,43 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
+            PlayingCanvas.SetActive(false);
+            ResultsCanvas.SetActive(true);
             if (isPlayerWinning&&!gaveCash)
             {
-                InfoText.text = "You won";
+                Result.text = "You won";
                 lvl.SetFinishdedTrue();
                 int money=PlayerPrefs.GetInt("Money",0);
                 PlayerPrefs.SetInt("Money", money + lvl.WinningCash);
                 gaveCash = true;
+                MoneyText.text = "You got: " + lvl.WinningCash + "$";
+                RestartNextText.text = "Next";
+                
             }
             else if (!gaveCash)
             {
-                InfoText.text = "You lost";
+                Result.text = "You lost";
                 int money = PlayerPrefs.GetInt("Money", 0);
                 PlayerPrefs.SetInt("Money", money + lvl.LoosingCash);
                 gaveCash = true;
+                RestartNextText.text="Restart";
+                MoneyText.text = "You got: " + lvl.LoosingCash + "$";
+            }
+            if (EnemyTime > 0)
+            {
+                enemyTimeText.text = "Enemy time: " + EnemyTime.ToString("F2") + "s";
+            }
+            else
+            {
+                enemyTimeText.text = "Enemy time: " + TimeCounter.ToString("F2") + "s";
+            }
+            if (PlayerTime>0)
+            {
+                playerTimeText.text = "Player time: " + PlayerTime.ToString("F2") + "s";
+            }
+            else
+            {
+                playerTimeText.text = "Player time: " + TimeCounter.ToString("F2") + "s";
             }
         }
 
@@ -112,7 +161,6 @@ public class GameManager : MonoBehaviour {
         if (!HasStarted)
         {
         Fillbar.IsGathering = false;
-        Debug.Log(Fillbar.SliderValue());
         StartCoroutine(Startting());
         
         }

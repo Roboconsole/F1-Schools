@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: f1
   m_EditorClassIdentifier: 
   name: f1
-  artwork: {fileID: 21300000, guid: d9444fb1ac9d07441befe2c36646e40b, type: 3}
-  carSprite: {fileID: 1510800641454886, guid: 1479dad61e2aaf346800d6b4e1d8939a, type: 2}
+  artwork: {fileID: 21300000, guid: 67284ce652e8bef438f4001172630b98, type: 3}
+  carSprite: {fileID: 1761095467901212, guid: c3fdac1456add474bb9619c3b2e0b105, type: 2}
   CpMin: 400
   CPWeightPerUpgrade: 20
   StartingUpgradePrice: 1000
-  IncreasePriceBy: 300
+  IncreasePriceBy: 200
