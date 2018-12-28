@@ -1,4 +1,0 @@
-#Sat Dec 08 01:02:45 EET 2018
-base.0=C\:\\Users\\RoboAbathur\\Documents\\formula schools\\F1-Schools\\FormulaSchools\\Temp\\gradleOut\\build\\intermediates\\transforms\\dex\\release\\0
-path.0=classes.dex
-renamed.0=classes.dex
